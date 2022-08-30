@@ -2,8 +2,11 @@
 # PostgreSQL Client Authentication Configuration File
 # ===================================================
 #
+# (The uppercase items must be replaced by actual values.)
+#
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
 # See: https://www.postgresql.org/docs/current/static/auth-pg-hba-conf.html
 
 {% for client in postgresql_hba_entries %}
-{{ client.type }} {{ client.database }} {{ client.user }} {{ client.address|default('') }} {{ client.ip_address|default('') }} {{ client.ip_mask|default('') }} {{ client.auth_method }} {{ client.auth_options|default("") }}
+{{ client.type }} {{ client.database | indent(6, true) }} {{ client.user | indent(6, true) }} {{ client.address|default('') | indent(6, true) }} {{ client.ip_address|default('') | indent(6, true) }} {{ client.ip_mask|default('') | indent(6, true) }} {{ client.auth_method | indent(6, true) }} {{ client.auth_options|default("") | indent(6, true) }}
 {% endfor %}
