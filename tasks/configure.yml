@@ -8,6 +8,7 @@
     mode: 0644
   with_items: "{{ postgresql_global_config_options }}"
   notify: restart postgresql
+  tags: config_global
 
 - name: Configure host based authentication (if entries are configured).
   template:
